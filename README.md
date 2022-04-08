@@ -25,6 +25,7 @@ To put is simply, a Regex or "regular expression" is a series of special charact
 ### Anchors
 
 Anchors in a regex expression determine how a string should begin or end.
+
     ^ --- A string will begin with the characters that follow the ^.
     $ --- A string will end with the characters that precede the $.
     \A --- A match must occur at the start of a string.
@@ -53,17 +54,20 @@ The OR operator is often paired with grouping constructs, which normally find on
 ### Character Classes
 
 Character classes simply define a se of characters.  There are some common character classes that can efficiently represent some pretty large groups!
+
     [characters] --- Matches any single character in the character group.
     [^characters] --- Matches exclude any single character in the character group.
     . --- Matches any character (except a newline character \n).
     \d --- Matches any arabic numeral (0-9).
     \w --- Matches any basic Latin alphanumeric including _.
     \s matches a single whitespace “ “, including tabs and line breaks.
+
 And \D, \W, \S invert their corresponding lower case counterparts.  For example, \D would match occurrences that DON'T contain arabic numerals.
 
 ### Flags
 
 After a regex literal expression is terminated with its second /, more functionality or limits can be added with a flag. Here are some common examples:
+
     g --- the global search, teh expression will test against all matches.
     i --- the characters' case should be ignored in matches.
     m --- the multi-line search, multi-line input strings should be treated as such.
@@ -113,10 +117,11 @@ Backreference allow previously matched subexpressions to be identified later in 
 ### Look-ahead and Look-behind
 
 Lookarounds in regex match occurrences if their surrounds also match a specified substring. 
-reg(?=sub) --- matches if "reg" is immediately followed by "sub".
-reg(?!sub) --- matches if "reg" is NOT immediately followed by "sub".
-(?<=sub)reg --- matches if "reg" is immediately preceded by "sub".
-(?<!sub)reg --- matches if "reg" is NOT immediately preceded by "sub".
+
+    reg(?=sub) --- matches if "reg" is immediately followed by "sub".
+    reg(?!sub) --- matches if "reg" is NOT immediately followed by "sub".
+    (?<=sub)reg --- matches if "reg" is immediately preceded by "sub".
+    (?<!sub)reg --- matches if "reg" is NOT immediately preceded by "sub".
 
 
 ## Author
