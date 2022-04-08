@@ -1,6 +1,6 @@
 # Reading the Regex
 
-You see them all around you, Regex Expressions.  The shockingly pervasive, seemingly nonsensical series of slashes, letters, numbers, and odd characters have found themselves relevant since the 1950s, and can be utilized in every common programming language.  Luckily these expressions only seem haphazard on first glance, and with a little core information the pattern and power behind the characters can come through. This guide is here to demystify everything from /[a-zA-Z0-9!@#$%^&*(){}]/ to /./
+You see them all around you, Regex Expressions.  The shockingly pervasive, seemingly nonsensical series of slashes, letters, numbers, and odd characters have found themselves relevant since the 1950s, and can be utilized in every common programming language.  Luckily these expressions only seem haphazard on first glance, and with a little core information the pattern and power behind the characters can come through. This guide is here to demystify everything from `/[a-zA-Z0-9!@#$%^&*(){}]/` to `/./`.
 
 ## Summary
 
@@ -21,6 +21,8 @@ To put is simply, a Regex or "regular expression" is a series of special charact
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
 ## Regex Components
+
+A regex is a **literal** so the pattern is wrapped in `/`, so a regex may look like `/^[a-zA-Z0-9&^%-]{5,20}(?=\s)$/`. Complicated, but nicely bookended by our `/`. Within these `/` you'll find a variety of characters specifying the pattern the regex is looking to match, so let's examine those characters.
 
 ### Anchors
 
@@ -70,9 +72,12 @@ And `\D`, `\W`, `\S` invert their corresponding lower case counterparts.  For ex
 
 After a regex literal expression is terminated with its second `/`, more functionality or limits can be added with a **flag**. Here are some common examples:
 
-    g --- the global search, teh expression will test against all matches.
-    i --- the characters' case should be ignored in matches.
-    m --- the multi-line search, multi-line input strings should be treated as such.
+    g --- global search, teh expression will test against all matches.
+    i --- case insensitive, the characters' case should be ignored in matches.
+    m --- multi-line search, multi-line input strings should be treated as such. ^ and $ anchors will match the beginning and end of the line.
+    s --- single-line search or Dotall, . will be treated as any character including \n.
+    u --- enables unicode escapes.
+    y --- sticky, an expression will only match from its lastIndex position.
 
 ### Grouping and Capturing
 
@@ -81,7 +86,7 @@ We can break larger search patterns into smaller "**grouping constructs**" or "*
 First off the find exact matches. So `(Hello)` will match "Hello" but not a rearrangement like "Helol". 
 
 Secondly, they benefit from an OR operator that allows these exact match searches to match with rearranged
-variations.  For example `(act)` would only match "act", but `(a|c|t)` would match "act", "cat", "tac", etc. 
+variations.  For example `(act)` would only match "act", but `(a|c|t)` would match "act", "atc", "cat", "cta", "tac", and "tca" , and `(ac|t)` would match "act" or "tac". 
 
 And finally, subexpressions can be either "**Capturing**" or "**Non-Capturing**". Capturing subexpressions can "capture" sequences for eventual reuse, whereas non-capturing subexpressions do not.  A subexpression can be deemed non-capturing by adding `?:` to the beginning of the parentheses like so: `(?:act)`.
 
