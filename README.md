@@ -53,7 +53,7 @@ A regex is a **literal** so the pattern is wrapped in `/`. A regex may look like
 
 The **OR operator** is often paired with grouping constructs, which normally find only exact matches.  Using the | or the OR operator, the matches can now be any rearrangement of the separated characters.
 
-For example `(act)` would only match "act", but `(a|c|t)` would match "act", "cat", "tac", etc. 
+For example `(act)` would only match "act", but `(a|c|t)` would match "act", "atc", "cat", "cta", "tac", and "tca" , and `(ac|t)` would match "act" or "tac".
 
 ### Character Classes
 
