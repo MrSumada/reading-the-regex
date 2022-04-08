@@ -22,7 +22,7 @@ To put is simply, a Regex or "regular expression" is a series of special charact
 
 ## Regex Components
 
-A regex is a **literal** so the pattern is wrapped in `/`, so a regex may look like `/^[a-zA-Z0-9&^%-]{5,20}(?=\s)$/`. Complicated, but nicely bookended by our `/`. Within these `/` you'll find a variety of characters specifying the pattern the regex is looking to match, so let's examine those characters.
+A regex is a **literal** so the pattern is wrapped in `/`. A regex may look like `/^[a-zA-Z0-9&^%-]{5,20}(?=\s)$/`. Complicated, but nicely bookended by our `/`. Within the `/`, you'll find a variety of characters specifying the pattern the regex is looking to match, so let's examine those characters.
 
 ### Anchors
 
