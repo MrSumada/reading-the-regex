@@ -24,7 +24,7 @@ To put is simply, a Regex or "regular expression" is a series of special charact
 
 ### Anchors
 
-Anchors in a regex expression determine how a string should begin or end.
+**Anchors** in a regex expression determine how a string should **begin** or **end**.
 
     ^ --- A string will begin with the characters that follow the ^.
     $ --- A string will end with the characters that precede the $.
@@ -38,7 +38,7 @@ Anchors in a regex expression determine how a string should begin or end.
 
 ### Quantifiers
 
-Quantifiers appear after the string pattern and they set the limits that a string must fulfill to be matched.  This often pertains to the number of characters a string can be. 
+**Quantifiers** appear after the string pattern and they set the limits that a string must fulfill to be matched.  This often pertains to the number of characters a string can be. 
 
     * --- Matches a pattern 0 or more time.
     + --- Matches a pattern 1 or more times.
@@ -49,11 +49,13 @@ Quantifiers appear after the string pattern and they set the limits that a strin
 
 ### OR Operator
 
-The OR operator is often paired with grouping constructs, which normally find only exact matches.  Using the | or the OR operator, the matches can now be any rearrangement of the separated characters. For example (act) would only match "act", but (a|c|t) would match "act", "cat", "tac", etc. 
+The **OR operator** is often paired with grouping constructs, which normally find only exact matches.  Using the | or the OR operator, the matches can now be any rearrangement of the separated characters.
+
+For example `(act)` would only match "act", but `(a|c|t)` would match "act", "cat", "tac", etc. 
 
 ### Character Classes
 
-Character classes simply define a se of characters.  There are some common character classes that can efficiently represent some pretty large groups!
+**Character classes** simply define a set of characters.  There are some common character classes that can efficiently represent some pretty large groups!
 
     [characters] --- Matches any single character in the character group.
     [^characters] --- Matches exclude any single character in the character group.
@@ -62,11 +64,11 @@ Character classes simply define a se of characters.  There are some common chara
     \w --- Matches any basic Latin alphanumeric including _.
     \s matches a single whitespace “ “, including tabs and line breaks.
 
-And \D, \W, \S invert their corresponding lower case counterparts.  For example, \D would match occurrences that DON'T contain arabic numerals.
+And `\D`, `\W`, `\S` invert their corresponding lower case counterparts.  For example, `\D` would match occurrences that DON'T contain arabic numerals.
 
 ### Flags
 
-After a regex literal expression is terminated with its second /, more functionality or limits can be added with a flag. Here are some common examples:
+After a regex literal expression is terminated with its second `/`, more functionality or limits can be added with a **flag**. Here are some common examples:
 
     g --- the global search, teh expression will test against all matches.
     i --- the characters' case should be ignored in matches.
@@ -74,14 +76,14 @@ After a regex literal expression is terminated with its second /, more functiona
 
 ### Grouping and Capturing
 
-We can break larger search patterns into smaller "grouping constructs" or "subexpressions".  They allow us to break up larger open-ended regular expressions and thus have a greater degree of specificity and an ability to fulfill particular requirements. We designate groupings with parentheses () and they are unique is a couple ways. 
+We can break larger search patterns into smaller "**grouping constructs**" or "**subexpressions**".  They allow us to break up larger open-ended regular expressions and thus have a greater degree of specificity and an ability to fulfill particular requirements. We designate groupings with parentheses `()` and they are unique is a couple ways. 
 
-First off the find exact matches. So (Hello) will match "Hello" but not a rearrangement like "Helol". 
+First off the find exact matches. So `(Hello)` will match "Hello" but not a rearrangement like "Helol". 
 
 Secondly, they benefit from an OR operator that allows these exact match searches to match with rearranged
-variations.  For example (act) would only match "act", but (a|c|t) would match "act", "cat", "tac", etc. 
+variations.  For example `(act)` would only match "act", but `(a|c|t)` would match "act", "cat", "tac", etc. 
 
-And finally, subexpressions can be either "Capturing" or "Non-Capturing". Capturing subexpressions can "capture" sequences for eventual reuse, whereas non-capturing subexpressions do not.  A subexpression can be deemed non-capturing by adding ?: to the beginning of the parentheses like so (?:act).
+And finally, subexpressions can be either "**Capturing**" or "**Non-Capturing**". Capturing subexpressions can "capture" sequences for eventual reuse, whereas non-capturing subexpressions do not.  A subexpression can be deemed non-capturing by adding `?:` to the beginning of the parentheses like so: `(?:act)`.
 
     ( sub ) --- captures match and assigns a number.
     (?< name > sub ) or (?' name ' sub) --- captures match and assigns a named group.
@@ -89,34 +91,35 @@ And finally, subexpressions can be either "Capturing" or "Non-Capturing". Captur
 
 ### Bracket Expressions
 
-Bracket expressions or a "positive character group" use [] to represent a range of characters that can fulfill the requirements. For example [abcde] will match any combination of those letters, from "abba" to "ecce" to "baccade". Bracket expressions may also use a hyphen (-) to connect sequential characters like [a-z] or [0-9]. In fact, that [abcde] could have been written [a-e]!
+**Bracket expressions** or "**positive character groups**" use `[]` to represent a range of characters that can fulfill the requirements. For example `[abcde]` will match any combination of those letters, from "abba" to "ecce" to "baccade". Bracket expressions may also use a hyphen (-) to connect sequential characters like `[a-z]` or `[0-9]`. In fact, that `[abcde]` could have been written `[a-e]`!
 
-Characters and hyphenated ranges of characters can be written adjacent in bracket expressions, and anything included in the expression will be sought in matches.  A bracket expression could look like [abcde12345] or [A-Z0-9?!] or [13579-+=/].  Just know that special characters must be written after the alphanumeric characters. 
+Characters and hyphenated ranges of characters can be written adjacent in bracket expressions, and anything included in the expression will be sought in matches.  A bracket expression could look like `[abcde12345]` or `[A-Z0-9?!]` or `[13579-+=/]`.  Just know that special characters must be written after the alphanumeric characters. 
 
-It's also worth noting, that regex is case-sensitive, so a bracket expression of [a-z] would not match "Hello" due to the capital "H".  However, because adjacent ranges can be combined in regex, [a-zA-Z] would match all upper and lower case characters, including "Hello". So these 
+It's also worth noting, that regex is case-sensitive, so a bracket expression of `[a-z]` would not match "Hello" due to the capital "H".  However, because adjacent ranges can be combined in regex, `[a-zA-Z]` would match all upper and lower case characters, including "Hello". So these 
 
-Finally a bracket expression can be flipped into a negative, meaning that everything in the expression will be excluded, not included in the matches. This is done using a ^ at the beginning of the bracket expression. So [^a-z] would exclude all lower case letters from matches.
+Finally, a bracket expression can be flipped into a negative, meaning that everything in the expression will be excluded, not included in the matches. This is done using a `^` at the beginning of the bracket expression. So `[^a-z]` would exclude all lower case letters from matches.
 
 ### Greedy and Lazy Match
 
-Whether a regex expression is greedy or lazy pertains to the number of matches it will attempt to make.
+Whether a regex expression is **greedy** or **lazy pertains** to the number of matches it will attempt to make.
 The quantifier for searches is inherently greedy, meaning it will match as many occurrences as possible. Whereas a lazy quantifier will match only the minimum number of occurrences.
 
-Quantifiers can be made lazy by having a ? follow them. 
+Quantifiers can be made lazy by having a `?` follow them. 
 
 ### Boundaries
 
-Word Boundaries are specific anchors that match positions between a alphanumeric or "word" character and a non-alphanumeric character. It's designated by \b. Similarly, we can use \B on  matches that do NOT occur on a boundary.
+**Word Boundaries** are specific anchors that match positions between a alphanumeric or "word" character and a non-alphanumeric character. It's designated by `\b`. Similarly, we can use `\B` on  matches that do NOT occur on a boundary.
 
 ### Back-references
 
-Backreference allow previously matched subexpressions to be identified later in the same regex. This would commonly be used for finding repeated words for example. Backreference constructs can be either number or name constructs. 
-\number match the value of a numbered subexpression. 
-\k< name > matches the value of a named subexpression.
+**Backreference** allow previously matched subexpressions to be identified later in the same regex. This would commonly be used for finding repeated words for example. Backreference constructs can be either number or name constructs. 
+
+    \number match the value of a numbered subexpression. 
+    \k< name > matches the value of a named subexpression.
 
 ### Look-ahead and Look-behind
 
-Lookarounds in regex match occurrences if their surrounds also match a specified substring. 
+**Lookarounds** in regex match occurrences if their surrounds also match a specified substring. 
 
     reg(?=sub) --- matches if "reg" is immediately followed by "sub".
     reg(?!sub) --- matches if "reg" is NOT immediately followed by "sub".
