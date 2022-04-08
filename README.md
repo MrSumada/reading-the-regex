@@ -25,14 +25,14 @@ To put is simply, a Regex or "regular expression" is a series of special charact
 ### Anchors
 
 Anchors in a regex expression determine how a string should begin or end.
-^ --- A string will begin with the characters that follow the ^.
-$ --- A string will end with the characters that precede the $.
-\A --- A match must occur at the start of a string.
-\Z --- A match must occur at the end of a string or before a new line \n.
-\z --- A match must occur at the end of a string.
-\G --- A match must occur at the point where a previous match ended.
-\b --- A match must match positions between a alphanumeric or "word" character and a non-alphanumeric character.
-\B --- A match must NOT match positions between a alphanumeric or "word" character and a non-alphanumeric character.
+    ^ --- A string will begin with the characters that follow the ^.
+    $ --- A string will end with the characters that precede the $.
+    \A --- A match must occur at the start of a string.
+    \Z --- A match must occur at the end of a string or before a new line \n.
+    \z --- A match must occur at the end of a string.
+    \G --- A match must occur at the point where a previous match ended.
+    \b --- A match must match positions between a alphanumeric or "word" character and a non-alphanumeric character.
+    \B --- A match must NOT match positions between a alphanumeric or "word" character and a non-alphanumeric character.
 
 
 ### Quantifiers
@@ -53,20 +53,20 @@ The OR operator is often paired with grouping constructs, which normally find on
 ### Character Classes
 
 Character classes simply define a se of characters.  There are some common character classes that can efficiently represent some pretty large groups!
-[characters] --- Matches any single character in the character group.
-[^characters] --- Matches exclude any single character in the character group.
-. --- Matches any character (except a newline character \n).
-\d --- Matches any arabic numeral (0-9).
-\w --- Matches any basic Latin alphanumeric including _.
-\s matches a single whitespace “ “, including tabs and line breaks.
+    [characters] --- Matches any single character in the character group.
+    [^characters] --- Matches exclude any single character in the character group.
+    . --- Matches any character (except a newline character \n).
+    \d --- Matches any arabic numeral (0-9).
+    \w --- Matches any basic Latin alphanumeric including _.
+    \s matches a single whitespace “ “, including tabs and line breaks.
 And \D, \W, \S invert their corresponding lower case counterparts.  For example, \D would match occurrences that DON'T contain arabic numerals.
 
 ### Flags
 
 After a regex literal expression is terminated with its second /, more functionality or limits can be added with a flag. Here are some common examples:
-g --- the global search, teh expression will test against all matches.
-i --- the characters' case should be ignored in matches.
-m --- the multi-line search, multi-line input strings should be treated as such.
+    g --- the global search, teh expression will test against all matches.
+    i --- the characters' case should be ignored in matches.
+    m --- the multi-line search, multi-line input strings should be treated as such.
 
 ### Grouping and Capturing
 
@@ -79,9 +79,9 @@ variations.  For example (act) would only match "act", but (a|c|t) would match "
 
 And finally, subexpressions can be either "Capturing" or "Non-Capturing". Capturing subexpressions can "capture" sequences for eventual reuse, whereas non-capturing subexpressions do not.  A subexpression can be deemed non-capturing by adding ?: to the beginning of the parentheses like so (?:act).
 
-( sub ) --- captures match and assigns a number.
-(?< name > sub ) or (?' name ' sub) --- captures match and assigns a named group.
-(?: sub ) --- defines a non-capturing group.
+    ( sub ) --- captures match and assigns a number.
+    (?< name > sub ) or (?' name ' sub) --- captures match and assigns a named group.
+    (?: sub ) --- defines a non-capturing group.
 
 ### Bracket Expressions
 
